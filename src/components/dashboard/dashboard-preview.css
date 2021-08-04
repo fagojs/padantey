@@ -12,5 +12,6 @@
 .preview-items {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin-left: 1rem;
 }
