@@ -7,9 +7,11 @@ const DashboardPreview = ({ data }) => {
     <div className="dashboard-preview">
       <span className="preview-title">{title}</span>
       <div className="preview-items">
-        {items.map((item) => (
-          <DashboardItem key={item.id} item={item} />
-        ))}
+        {items
+          .filter((item, idx) => idx < 4)
+          .map((item) => (
+            <DashboardItem key={item.id} item={item} />
+          ))}
       </div>
     </div>
   );
