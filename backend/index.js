@@ -3,10 +3,13 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 
+const noteRoutes = require("./routes/note.route");
+
 const app = express();
 const port = process.env.PORT_NUM || 5000;
 
 app.use(express.json());
+app.use("/note", noteRoutes);
 
 app.listen(port, () => {
   console.log(`Successfully running at http://localhost:${port}.`);
