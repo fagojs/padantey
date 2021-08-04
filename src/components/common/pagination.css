@@ -1,0 +1,21 @@
+.paginate {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+ul {
+  list-style: none;
+}
+li {
+  border: 1px solid black;
+  width: 2rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+.active-page-link {
+  color: #fff;
+  background-color: #000;
+}
+li:hover {
+  transform: scale(1.1);
+}
