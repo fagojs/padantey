@@ -1,0 +1,16 @@
+.dashboard-preview {
+  margin-top: 2rem;
+}
+.preview-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 1rem;
+}
+.preview-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

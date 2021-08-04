@@ -2,6 +2,8 @@ import DashboardPreview from "./dashboard-preview.component";
 
 import DASH_DATA from "./../../assets/dashboard-data";
 
+import "./dashboard-page.css";
+
 const DashboardPage = () => {
   return (
     <div className="dashboard-container">

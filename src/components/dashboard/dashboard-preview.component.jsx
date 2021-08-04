@@ -1,14 +1,16 @@
 import DashboardItem from "./dashboard-item.component.jsx";
 
+import "./dashboard-preview.css";
 const DashboardPreview = ({ data }) => {
   const { title, items } = data;
   return (
     <div className="dashboard-preview">
       <span className="preview-title">{title}</span>
-
-      {items.map((item) => (
-        <DashboardItem key={item.id} item={item} />
-      ))}
+      <div className="preview-items">
+        {items.map((item) => (
+          <DashboardItem key={item.id} item={item} />
+        ))}
+      </div>
     </div>
   );
 };
