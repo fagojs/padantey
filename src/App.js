@@ -1,9 +1,11 @@
 import "./App.css";
 
+import DashboardPage from "./components/dashboard/dashboard-page.component";
+
 function App() {
   return (
     <div className="App">
-      <h1>Hello there</h1>
+      <DashboardPage />
     </div>
   );
 }
