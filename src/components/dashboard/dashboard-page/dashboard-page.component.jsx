@@ -1,6 +1,6 @@
-import DashboardPreview from "./dashboard-preview.component";
+import DashboardPreview from "../dashboard-preview/dashboard-preview.component";
 
-import DASH_DATA from "./../../assets/dashboard-data";
+import DASH_DATA from "../../../assets/dashboard-data";
 
 import "./dashboard-page.css";
 

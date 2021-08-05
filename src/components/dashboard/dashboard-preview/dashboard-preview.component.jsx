@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import DashboardItem from "./dashboard-item.component.jsx";
-import Pagination from "./../common/pagination";
+import DashboardItem from "../dashboard-item/dashboard-item.component";
+import Pagination from "./../../common/pagination/pagination";
 
 import "./dashboard-preview.css";
 

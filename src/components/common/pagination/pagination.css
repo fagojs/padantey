@@ -11,6 +11,9 @@ li {
   width: 2rem;
   height: 1.5rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .active-page-link {
   color: #fff;

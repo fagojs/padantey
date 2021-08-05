@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import FormInput from "../../components/common/form-input";
-import CommonButton from "../common/common-button.component";
+import FormInput from "../../common/form-input/form-input";
+import CommonButton from "../../common/commonbutton/common-button.component";
 import "./sell-note.css";
 
 const SellNote = () => {
