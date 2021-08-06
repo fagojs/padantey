@@ -10,23 +10,93 @@ import CommonButton from "./../../common/commonbutton/common-button.component";
 import "./signup.css";
 
 const Signup = () => {
+  const [state, setState] = useState({
+    username: "",
+    email: "",
+    password: "",
+    contact: "",
+    college: "",
+    university: "",
+    faculty: "",
+    semester: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setState({
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(state.semester);
+    //backend-call
+
+    // setState({
+    //   ...state,
+    //   username: "",
+    //   email: "",
+    //   password: "",
+    //   contact: "",
+    //   college: "",
+    //   university: "",
+    //   faculty: "",
+    //   semester: "",
+    // });
+  };
+
   return (
     <div className="signup-container">
       <div className="signup-header">
         <h1>PADANTEY</h1>
         <span>Register with given information.</span>
       </div>
-      <form className="signup-form-container">
-        <FormInput label="Username" type="text" name="username" />
-        <FormInput label="Email" type="email" name="email" />
-        <FormInput label="Password" type="password" name="password" />
-        <FormInput label="Contact-Number" type="number" name="contact" />
-        <FormInput label="College" type="text" name="college" />
-        <UniversitySelect label="University" name="university" />
-        <FacultySelect label="Faculty" name="faculty" />
-        <SemesterSelect label="Semester" name="semester" />
+      <form className="signup-form-container" onSubmit={handleSubmit}>
+        <FormInput
+          label="Username"
+          type="text"
+          name="username"
+          value={state.username}
+          onChange={handleChange}
+        />
+        <FormInput
+          label="Email"
+          type="email"
+          name="email"
+          value={state.email}
+          onChange={handleChange}
+        />
+        <FormInput
+          label="Password"
+          type="password"
+          name="password"
+          value={state.password}
+          onChange={handleChange}
+        />
+        <FormInput
+          label="Contact-Number"
+          type="number"
+          name="contact"
+          value={state.contact}
+          onChange={handleChange}
+        />
+        <FormInput
+          label="College"
+          type="text"
+          name="college"
+          value={state.college}
+          onChange={handleChange}
+        />
+        <UniversitySelect
+          value={state.university}
+          handleChange={handleChange}
+        />
+        <FacultySelect value={state.faculty} handleChange={handleChange} />
+        <SemesterSelect value={state.semester} handleChange={handleChange} />
         <div className="register-button">
-          <CommonButton>Register</CommonButton>
+          <CommonButton type="submit">Register</CommonButton>
         </div>
       </form>
       <p>
