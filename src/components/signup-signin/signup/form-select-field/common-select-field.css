@@ -12,11 +12,11 @@
   font-weight: bold;
 }
 .select-field select {
-  width: 25%;
-  padding: 0 2.5rem;
+  width: 55%;
+  padding: 0 2rem;
   font-size: 1.1rem;
   letter-spacing: 0.1rem;
-  border-bottom: 1px solid black;
+  border: 1px solid black;
   background: none;
   background-color: #fff;
   outline: none;
