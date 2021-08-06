@@ -1,9 +1,11 @@
 import React from "react";
 import CommonOption from "./option-of-select/common-option";
 
+import "./common-select-field.css";
+
 const FacultySelect = ({ label, name }) => {
   return (
-    <div className="faculty-select">
+    <div className="select-field">
       <label>{label}</label>
       <select name={name}>
         <CommonOption value="bct" optionLabel="Computer Engineering" />

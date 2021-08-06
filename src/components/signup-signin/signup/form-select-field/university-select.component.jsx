@@ -3,7 +3,7 @@ import CommonOption from "./option-of-select/common-option";
 
 const UniversitySelect = ({ label, name }) => {
   return (
-    <div className="university-select">
+    <div className="select-field">
       <label>{label}</label>
       <select name={name}>
         <CommonOption value="tu" optionLabel="Tribhuvan University" />

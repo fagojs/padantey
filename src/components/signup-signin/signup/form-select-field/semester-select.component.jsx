@@ -2,9 +2,11 @@ import React from "react";
 
 import CommonOption from "./option-of-select/common-option";
 
+import "./common-select-field.css";
+
 const SemesterSelect = ({ label, name }) => {
   return (
-    <div className="semester-select">
+    <div className="select-field">
       <label>{label}</label>
       <select name={name}>
         <CommonOption value="1" optionLabel="First Semester" />
