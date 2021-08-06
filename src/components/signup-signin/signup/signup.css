@@ -1,0 +1,31 @@
+.signup-container {
+  width: 50vw;
+  margin: 1rem auto 0 auto;
+  border: 2px solid black;
+  border-radius: 0.3rem;
+  padding: 0 1rem;
+}
+.signup-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signup-header h1 {
+  margin-bottom: 0.2rem;
+}
+.signup-header span {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+.signup-form-container {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.register-button {
+  display: flex;
+  justify-content: center;
+}
+.signup-container p {
+  text-align: center;
+  font-size: 1.2rem;
+}
