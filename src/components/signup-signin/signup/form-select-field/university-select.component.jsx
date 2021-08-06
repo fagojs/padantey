@@ -1,14 +1,26 @@
 import React from "react";
 import CommonOption from "./option-of-select/common-option";
 
-const UniversitySelect = ({ label, name }) => {
+const UniversitySelect = ({ value, handleChange }) => {
   return (
     <div className="select-field">
-      <label>{label}</label>
-      <select name={name}>
-        <CommonOption value="tu" optionLabel="Tribhuvan University" />
-        <CommonOption value="ku" optionLabel="Kathmandu University" />
-        <CommonOption value="pu" optionLabel="Pokhara University" />
+      <label>University</label>
+      <select name="university" value={value} onChange={handleChange} required>
+        <option value="" select="true" disabled>
+          --Select University--
+        </option>
+        <CommonOption
+          value="Tribhuvan University"
+          optionLabel="Tribhuvan University"
+        />
+        <CommonOption
+          value="Kathmandu University"
+          optionLabel="Kathmandu University"
+        />
+        <CommonOption
+          value="Pokhara University"
+          optionLabel="Pokhara University"
+        />
       </select>
     </div>
   );

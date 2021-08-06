@@ -3,11 +3,14 @@ import CommonOption from "./option-of-select/common-option";
 
 import "./common-select-field.css";
 
-const FacultySelect = ({ label, name }) => {
+const FacultySelect = ({ value, handleChange }) => {
   return (
     <div className="select-field">
-      <label>{label}</label>
-      <select name={name}>
+      <label>Faculty</label>
+      <select name="faculty" value={value} onChange={handleChange} required>
+        <option value="" select="true" disabled>
+          --Select Faculty--
+        </option>
         <CommonOption value="bct" optionLabel="Computer Engineering" />
         <CommonOption value="bex" optionLabel="Electrical Engineering" />
         <CommonOption value="bge" optionLabel="Geomatics Engineering" />

@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 import CommonOption from "./option-of-select/common-option";
 
 import "./common-select-field.css";
 
-const SemesterSelect = ({ label, name }) => {
+const SemesterSelect = ({ value, handleChange }) => {
   return (
     <div className="select-field">
-      <label>{label}</label>
-      <select name={name}>
-        <CommonOption value="1" optionLabel="First Semester" />
-        <CommonOption value="2" optionLabel="Second Semester" />
-        <CommonOption value="3" optionLabel="Third Semester" />
-        <CommonOption value="4" optionLabel="Fourth Semester" />
-        <CommonOption value="5" optionLabel="Fifth Semester" />
-        <CommonOption value="6" optionLabel="Sixth Semester" />
-        <CommonOption value="7" optionLabel="Seventh Semester" />
-        <CommonOption value="8" optionLabel="Eighth Semester" />
+      <label>Semester</label>
+      <select name="semester" value={value} onChange={handleChange} required>
+        <option value="" select="true" disabled>
+          --Select Semester--
+        </option>
+        <CommonOption value="First" optionLabel="First Semester" />
+        <CommonOption value="Second" optionLabel="Second Semester" />
+        <CommonOption value="Third" optionLabel="Third Semester" />
+        <CommonOption value="Fourth" optionLabel="Fourth Semester" />
+        <CommonOption value="Fifth" optionLabel="Fifth Semester" />
+        <CommonOption value="Sixth" optionLabel="Sixth Semester" />
+        <CommonOption value="Seventh" optionLabel="Seventh Semester" />
+        <CommonOption value="Eighth" optionLabel="Eighth Semester" />
       </select>
     </div>
   );
