@@ -1,0 +1,23 @@
+.select-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1.5rem;
+}
+.select-field label {
+  width: 25%;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.select-field select {
+  width: 25%;
+  padding: 0 2.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  border-bottom: 1px solid black;
+  background: none;
+  background-color: #fff;
+  outline: none;
+}
