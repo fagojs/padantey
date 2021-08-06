@@ -18,9 +18,8 @@ const Signup = () => {
         <FormInput label="Email" type="email" name="email" />
         <FormInput label="Password" type="password" name="password" />
         <FormInput label="Contact-Number" type="number" name="contact" />
-        <FormInput label="Username" type="text" name="username" />
-        <UniversitySelect label="University" name="university" />
         <FormInput label="College" type="text" name="college" />
+        <UniversitySelect label="University" name="university" />
         <FacultySelect label="Faculty" name="faculty" />
         <SemesterSelect label="Semester" name="semester" />
       </form>
