@@ -24,6 +24,7 @@ const FormInput = ({ label, type, name, min, value, onChange }) => {
             value={value}
             onChange={onChange}
             min={`${name === "page" || name === "price" ? `${min}` : "null"}`}
+            required
           />
         </div>
       )}
