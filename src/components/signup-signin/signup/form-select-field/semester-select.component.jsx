@@ -12,14 +12,14 @@ const SemesterSelect = ({ value, handleChange }) => {
         <option value="" select="true" disabled>
           --Select Semester--
         </option>
-        <CommonOption value="First" optionLabel="First Semester" />
-        <CommonOption value="Second" optionLabel="Second Semester" />
-        <CommonOption value="Third" optionLabel="Third Semester" />
-        <CommonOption value="Fourth" optionLabel="Fourth Semester" />
-        <CommonOption value="Fifth" optionLabel="Fifth Semester" />
-        <CommonOption value="Sixth" optionLabel="Sixth Semester" />
-        <CommonOption value="Seventh" optionLabel="Seventh Semester" />
-        <CommonOption value="Eighth" optionLabel="Eighth Semester" />
+        <option value="First">First Semester</option>
+        <option value="Second">Second Semester</option>
+        <option value="Third">Third Semester</option>
+        <option value="Fourth">Fourth Semester</option>
+        <option value="Fifth">Fifth Semester</option>
+        <option value="Sixth">Sixth Semester</option>
+        <option value="Seventh">Seventh Semester</option>
+        <option value="Eighth">Eighth Semester</option>
       </select>
     </div>
   );

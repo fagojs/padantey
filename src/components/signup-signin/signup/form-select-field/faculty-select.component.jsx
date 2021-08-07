@@ -11,11 +11,11 @@ const FacultySelect = ({ value, handleChange }) => {
         <option value="" select="true" disabled>
           --Select Faculty--
         </option>
-        <CommonOption value="bct" optionLabel="Computer Engineering" />
-        <CommonOption value="bex" optionLabel="Electrical Engineering" />
-        <CommonOption value="bge" optionLabel="Geomatics Engineering" />
-        <CommonOption value="bce" optionLabel="Civil Engineering" />
-        <CommonOption value="bme" optionLabel="Mechanical Engineering" />
+        <option value="bct">Computer Engineering</option>
+        <option value="bec">Electrical Engineering</option>
+        <option value="bge">Geomatics Engineering</option>
+        <option value="bce">Civil Engineering</option>
+        <option value="bme">Mechanical Engineering</option>
       </select>
     </div>
   );

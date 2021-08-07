@@ -9,18 +9,9 @@ const UniversitySelect = ({ value, handleChange }) => {
         <option value="" select="true" disabled>
           --Select University--
         </option>
-        <CommonOption
-          value="Tribhuvan University"
-          optionLabel="Tribhuvan University"
-        />
-        <CommonOption
-          value="Kathmandu University"
-          optionLabel="Kathmandu University"
-        />
-        <CommonOption
-          value="Pokhara University"
-          optionLabel="Pokhara University"
-        />
+        <option value="Tribuvan University">Tribhuvan University</option>
+        <option value="Kathmandu University">Kathmandu University</option>
+        <option value="Pokhara University">Pokhara University</option>
       </select>
     </div>
   );
