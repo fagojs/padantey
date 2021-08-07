@@ -25,26 +25,14 @@ const Signup = () => {
     const { name, value } = e.target;
 
     setState({
+      ...state,
       [name]: value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state.semester);
     //backend-call
-
-    // setState({
-    //   ...state,
-    //   username: "",
-    //   email: "",
-    //   password: "",
-    //   contact: "",
-    //   college: "",
-    //   university: "",
-    //   faculty: "",
-    //   semester: "",
-    // });
   };
 
   return (
