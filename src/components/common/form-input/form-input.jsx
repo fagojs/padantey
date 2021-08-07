@@ -1,6 +1,6 @@
 import "./form-input.css";
 
-const FormInput = ({ label, type, name, min, value, onChange }) => {
+const FormInput = ({ label, type, name, min, handleChange }) => {
   return (
     <div>
       {name === "description" ? (
@@ -9,8 +9,7 @@ const FormInput = ({ label, type, name, min, value, onChange }) => {
           <textarea
             name="description"
             type="text"
-            value={value}
-            onChange={onChange}
+            onChange={handleChange}
             required
           />
         </div>
@@ -21,8 +20,7 @@ const FormInput = ({ label, type, name, min, value, onChange }) => {
             type={type}
             className="input-field"
             name={name}
-            value={value}
-            onChange={onChange}
+            onChange={handleChange}
             min={`${name === "page" || name === "price" ? `${min}` : "null"}`}
             required
           />
