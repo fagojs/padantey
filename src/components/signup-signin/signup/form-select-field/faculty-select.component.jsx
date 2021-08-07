@@ -1,5 +1,4 @@
 import React from "react";
-import CommonOption from "./option-of-select/common-option";
 
 import "./common-select-field.css";
 

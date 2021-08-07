@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-import CommonOption from "./option-of-select/common-option";
+import React from "react";
 
 import "./common-select-field.css";
 
