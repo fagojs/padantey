@@ -2,11 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
+const auth = require("../middleware/auth.middleware");
 const Note = require("../models/note.model");
 
 const validateNoteInput = require("../validation/note.validation");
 
-router.post("/add-note", (req, res) => {
+router.post("/add-note", auth, (req, res) => {
   const { errors, isValid } = validateNoteInput(req.body);
 
   if (!isValid) {
@@ -21,6 +22,8 @@ router.post("/add-note", (req, res) => {
       page: req.body.page,
       quality: req.body.quality,
       description: req.body.description,
+      user: req.user.id,
+      date: req.body.date,
     });
 
     newNote
