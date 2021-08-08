@@ -40,6 +40,9 @@ const SellNote = () => {
 
   return (
     <div className="sell-note-container">
+      <h2 align="center" style={{ marginBottom: "2.5rem", marginTop: "0" }}>
+        Place Your Note Details
+      </h2>
       <form className="sell-form" onSubmit={handleSubmit}>
         <FormInput
           label="Name"
