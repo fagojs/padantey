@@ -6,6 +6,14 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
+  carts: {
+    notes: [
+      {
+        productId: { type: Schema.Types.ObjectId, ref: "Note", required: true },
+        quantity: { type: Number, required: true },
+      },
+    ],
+  },
   contact: { type: Number, required: true },
   university: { type: String },
   college: { type: String },
