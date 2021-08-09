@@ -36,5 +36,18 @@ router.post("/add-note", auth, (req, res) => {
     return res.status(400).json({ message: "Cannot add note to database." });
   }
 });
+router.get("/get-note", auth, async (req, res) => {
+  try {
+    const notes = await Note.find();
+    if (!notes) {
+      return res.status(400).json({ message: "There are no notes currently." });
+    }
+    res.status(201).json({
+      notesData: notes,
+    });
+  } catch (error) {
+    res.status(400).json({ message: "Error fetching notes." });
+  }
+});
 
 module.exports = router;
