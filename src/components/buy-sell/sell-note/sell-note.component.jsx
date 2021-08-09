@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import FormInput from "../../common/form-input/form-input";
 import CommonButton from "../../common/commonbutton/common-button.component";
@@ -22,20 +23,36 @@ const SellNote = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setState({
-      ...state,
-      name: "",
-      author: "",
-      description: "",
-      quality: "",
-      page: 0,
-      price: 0,
-      date: Date.now(),
-    });
     //backend-call
+    try {
+      const noteData = {
+        name: state.name,
+        author: state.author,
+        description: state.description,
+        quality: state.quality,
+        page: state.page,
+        price: state.price,
+        date: state.date,
+      };
+      const userToken = localStorage.getItem("token");
+      if (!userToken) {
+        alert("Have You Registered ?");
+        window.location = "/signin";
+      }
+
+      const note = await axios.post(
+        "http://localhost:8000/note/add-note",
+        noteData,
+        { headers: { "x-auth-token": `${userToken}` } }
+      );
+      window.location = "/";
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data);
+      }
+    }
   };
 
   return (
@@ -49,28 +66,28 @@ const SellNote = () => {
           name="name"
           type="text"
           value={state.name}
-          onChange={handleChange}
+          handleChange={handleChange}
         />
         <FormInput
           label="Author"
           name="author"
           type="text"
           value={state.author}
-          onChange={handleChange}
+          handleChange={handleChange}
         />
         <FormInput
           label="Description"
           name="description"
           type="text"
           value={state.description}
-          onChange={handleChange}
+          handleChange={handleChange}
         />
         <FormInput
           label="Quality"
           name="quality"
           type="text"
           value={state.quality}
-          onChange={handleChange}
+          handleChange={handleChange}
         />
         <FormInput
           label="Page"
@@ -78,7 +95,7 @@ const SellNote = () => {
           type="number"
           min="1"
           value={state.page}
-          onChange={handleChange}
+          handleChange={handleChange}
         />
         <FormInput
           label="Price(in-rupees)"
@@ -86,14 +103,14 @@ const SellNote = () => {
           type="number"
           min="1"
           value={state.price}
-          onChange={handleChange}
+          handleChange={handleChange}
         />
         <FormInput
           label="Date"
           name="date"
           type="date"
           value={state.date}
-          onChange={handleChange}
+          handleChange={handleChange}
         />
         <div className="sell-button">
           <CommonButton type="submit">SELL</CommonButton>
