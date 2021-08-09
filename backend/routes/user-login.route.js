@@ -31,13 +31,13 @@ router.post("/login", async (req, res) => {
     }
 
     jwt.sign(
-      { id: user.id, name: user.name, email: user.email },
+      { id: user.id, username: user.username, email: user.email },
       process.env.secretKey,
       { expiresIn: 3600 },
       (err, token) => {
         return res.status(200).json({
           token,
-          message: `${user.name}, you're logged in successfully.`,
+          message: `${user.username}, you're logged in successfully.`,
         });
       }
     );

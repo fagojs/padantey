@@ -28,7 +28,7 @@ router.post("/register", async (req, res) => {
       d: "mm",
     });
     const newUser = new User({
-      name: req.body.name,
+      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
       avatar,
@@ -45,14 +45,18 @@ router.post("/register", async (req, res) => {
         newUser.password = hash;
         const savedUser = await newUser.save();
         jwt.sign(
-          { id: savedUser.id, name: savedUser.name, email: savedUser.email },
+          {
+            id: savedUser.id,
+            username: savedUser.username,
+            email: savedUser.email,
+          },
           process.env.secretKey,
           { expiresIn: 3600 },
           (err, token) => {
             if (err) throw err;
             res.status(201).json({
               token,
-              message: `${savedUser.name}, you're registered successfully.`,
+              message: `${savedUser.username}, you're registered successfully.`,
             });
           }
         );

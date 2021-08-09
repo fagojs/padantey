@@ -5,16 +5,16 @@ const isEmpty = require("./utils/isEmpty.utils");
 const validateUserRegister = (data) => {
   let errors = {};
 
-  data.name = !isEmpty(data.name) ? data.name : "";
+  data.username = !isEmpty(data.username) ? data.username : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.contact = !isEmpty(data.contact) ? data.contact : "";
 
-  if (!validator.isLength(data.name, { min: 2, max: 30 })) {
-    errors.name = "Name must be between 2 to 30 characters";
+  if (!validator.isLength(data.username, { min: 2, max: 30 })) {
+    errors.username = "Username must be between 2 to 30 characters";
   }
-  if (validator.isEmpty(data.name)) {
-    errors.name = "Name field can not be empty";
+  if (validator.isEmpty(data.username)) {
+    errors.username = "username field can not be empty";
   }
 
   if (!validator.isEmail(data.email)) {

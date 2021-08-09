@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  name: { type: String, required: true },
+  username: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
   carts: {
@@ -18,8 +18,7 @@ const userSchema = new Schema({
   university: { type: String },
   college: { type: String },
   faculty: { type: String },
-  semester: { type: Number },
-  date: { type: Date, default: Date.now() },
+  semester: { type: String },
 });
 
 module.exports = mongoose.model("User", userSchema);
