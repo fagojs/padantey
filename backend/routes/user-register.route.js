@@ -54,10 +54,13 @@ router.post("/register", async (req, res) => {
           { expiresIn: 3600 },
           (err, token) => {
             if (err) throw err;
-            res.status(201).json({
-              token,
-              message: `${savedUser.username}, you're registered successfully.`,
-            });
+            res
+              .header("x-auth-token", token)
+              .status(201)
+              .json({
+                token,
+                message: `${savedUser.username}, you're registered successfully.`,
+              });
           }
         );
       });
