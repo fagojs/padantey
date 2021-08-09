@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import CartIcon from "../cart/cart-icon/cart-icon.component";
+
 import "./header.css";
 
 const Header = () => {
@@ -25,6 +27,7 @@ const Header = () => {
         <Link to="/signin" className="header">
           Signin
         </Link>
+        <CartIcon />
       </div>
     </div>
   );
