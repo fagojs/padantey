@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 import CommonButton from "../../common/commonbutton/common-button.component";
 import FormInput from "../../common/form-input/form-input";
 
@@ -19,9 +19,27 @@ const Signin = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     //backend-call
+    try {
+      const userData = {
+        email: state.email,
+        password: state.password,
+      };
+      const { data } = await axios.post(
+        "http://localhost:8000/user/login",
+        userData
+      );
+      const userToken = data.token;
+      localStorage.setItem("token", userToken);
+      window.location = "/";
+    } catch (error) {
+      if (error.response) {
+        const key = Object.keys(error.response.data)[0];
+        alert(error.response.data[key]);
+      }
+    }
   };
 
   return (
