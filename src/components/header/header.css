@@ -7,6 +7,11 @@
 }
 .logo-container {
   width: 30%;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: black;
 }
 .other-headers {
   display: flex;

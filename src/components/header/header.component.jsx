@@ -2,16 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import CartIcon from "../cart/cart-icon/cart-icon.component";
+import { BsBook } from "react-icons/bs";
 
 import "./header.css";
 
 const Header = ({ currentUser }) => {
-  //console.log(currentUser);
   return (
     <div className="header-container">
-      <div className="logo-container">
-        <h1>Logo</h1>
-      </div>
+      <Link className="logo-container" to="/">
+        <BsBook />
+      </Link>
       <div className="other-headers">
         <Link to="/" className="header">
           Dashboard
