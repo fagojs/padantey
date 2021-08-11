@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
+
 import CommonButton from "../../common/commonbutton/common-button.component";
 import FormInput from "../../common/form-input/form-input";
 
@@ -68,7 +70,11 @@ const Signin = () => {
         </div>
       </form>
       <p>
-        Not registered yet ? <a href="#">Sign Up</a>
+        Not registered yet ?{" "}
+        <NavLink to="/signup" className="nav-link">
+          Register{" "}
+        </NavLink>
+        here.
       </p>
     </div>
   );

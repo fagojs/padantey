@@ -31,3 +31,12 @@
   text-align: center;
   font-size: 1.2rem;
 }
+.nav-link {
+  text-decoration: none;
+  color: rgb(43, 56, 243);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.nav-link:hover {
+  color: black;
+}
