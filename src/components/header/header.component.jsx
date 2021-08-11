@@ -5,7 +5,8 @@ import CartIcon from "../cart/cart-icon/cart-icon.component";
 
 import "./header.css";
 
-const Header = () => {
+const Header = ({ currentUser }) => {
+  //console.log(currentUser);
   return (
     <div className="header-container">
       <div className="logo-container">
@@ -15,19 +16,26 @@ const Header = () => {
         <Link to="/" className="header">
           Dashboard
         </Link>
-        <Link to="/buy-note" className="header">
-          Buy-Note
-        </Link>
-        <Link to="/sell-note" className="header">
-          Sell-Note
-        </Link>
-        <Link to="/signup" className="header">
-          Register
-        </Link>
-        <Link to="/signin" className="header">
-          Signin
-        </Link>
-        <CartIcon />
+        {currentUser ? (
+          <React.Fragment>
+            <Link to="/buy-note" className="header">
+              Buy-Note
+            </Link>
+            <Link to="/sell-note" className="header">
+              Sell-Note
+            </Link>
+            <CartIcon />
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Link to="/signup" className="header">
+              Register
+            </Link>
+            <Link to="/signin" className="header">
+              Signin
+            </Link>
+          </React.Fragment>
+        )}
       </div>
     </div>
   );

@@ -15,10 +15,11 @@
   justify-content: space-around;
 }
 .header {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   text-decoration: none;
   color: black;
   font-weight: bold;
+  text-transform: uppercase;
 }
 .header:hover {
   transform: scale(1.1);
