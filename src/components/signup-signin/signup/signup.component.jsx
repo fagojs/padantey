@@ -1,5 +1,6 @@
-//import "../CSS/signup.css";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 import FormInput from "../../common/form-input/form-input";
 import FacultySelect from "./form-select-field/faculty-select.component";
@@ -8,7 +9,6 @@ import UniversitySelect from "./form-select-field/university-select.component";
 import CommonButton from "./../../common/commonbutton/common-button.component";
 
 import "./signup.css";
-import axios from "axios";
 
 const Signup = () => {
   const [state, setState] = useState({
@@ -115,7 +115,11 @@ const Signup = () => {
         </div>
       </form>
       <p>
-        Already have an account ? <a href="#">Log In</a>
+        Already have an account ?{" "}
+        <NavLink to="/signin" className="nav-link">
+          Login{" "}
+        </NavLink>
+        here.
       </p>
     </div>
   );
