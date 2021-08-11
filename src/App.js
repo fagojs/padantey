@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 import DashboardPage from "./components/dashboard/dashboard-page/dashboard-page.component";
@@ -29,10 +29,34 @@ function App() {
       <Header currentUser={currentUser} />
       <Switch>
         <Route exact path="/" component={DashboardPage} />
-        <Route path="/buy-note" component={BuyNote} />
-        <Route path="/sell-note" component={SellNote} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/signin" component={Signin} />
+        <Route
+          path="/buy-note"
+          exact
+          render={() => {
+            return currentUser ? <BuyNote /> : <Redirect to="/signup" />;
+          }}
+        />
+        <Route
+          path="/sell-note"
+          exact
+          render={() => {
+            return currentUser ? <SellNote /> : <Redirect to="/signup" />;
+          }}
+        />
+        <Route
+          path="/signup"
+          exact
+          render={() => {
+            return currentUser ? <Redirect to="/" /> : <Signup />;
+          }}
+        />
+        <Route
+          path="/signin"
+          exact
+          render={() => {
+            return currentUser ? <Redirect to="/" /> : <Signin />;
+          }}
+        />
       </Switch>
     </div>
   );
