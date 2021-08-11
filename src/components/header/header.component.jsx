@@ -24,6 +24,9 @@ const Header = ({ currentUser }) => {
             <Link to="/sell-note" className="header">
               Sell-Note
             </Link>
+            <Link to="/logout" className="header">
+              Logout
+            </Link>
             <CartIcon />
           </React.Fragment>
         ) : (
