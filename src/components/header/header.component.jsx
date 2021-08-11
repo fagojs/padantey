@@ -24,8 +24,25 @@ const Header = ({ currentUser }) => {
             <Link to="/sell-note" className="header">
               Sell-Note
             </Link>
-            <Link to="/logout" className="header">
-              Logout
+            <Link
+              to="/logout"
+              className="header"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span>Logout</span>
+              <span
+                style={{
+                  fontWeight: "normal",
+                  fontSize: "0.8rem",
+                }}
+              >
+                {currentUser.username}
+              </span>
             </Link>
             <CartIcon />
           </React.Fragment>
