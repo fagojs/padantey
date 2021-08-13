@@ -8,21 +8,25 @@ import "./buy-preview.css";
 
 const BuyPreview = ({ currentUser }) => {
   const [totalNotes, setTotalNotes] = useState([]);
+
+  let componentMounted = true;
+  const fetchData = async () => {
+    const userToken = localStorage.getItem("token");
+    return await axios.get("http://localhost:8000/note/get-note", {
+      headers: { "x-auth-token": `${userToken}` },
+    });
+  };
+
   useEffect(() => {
     try {
-      const fetchData = async () => {
-        const userToken = localStorage.getItem("token");
-        const data = await axios.get("http://localhost:8000/note/get-note", {
-          headers: { "x-auth-token": `${userToken}` },
-        });
-        return data;
-      };
       fetchData()
         .then(({ data }) => {
           const filteredNote = data.notesData.filter(
             (note) => note.user.toString() !== currentUser.id.toString()
           );
-          setTotalNotes(filteredNote);
+          if (componentMounted) {
+            setTotalNotes(filteredNote);
+          }
         })
         .catch((err) => {
           if (err) throw err;
@@ -32,7 +36,11 @@ const BuyPreview = ({ currentUser }) => {
         alert(error.response.message);
       }
     }
-  });
+    //runs-if-component-unmounts
+    return () => {
+      componentMounted = false;
+    };
+  }, []);
   const [currentPage, setCurrentPage] = useState(1);
   const [notesPerPage] = useState(6);
 
@@ -48,7 +56,7 @@ const BuyPreview = ({ currentUser }) => {
     <div className="buy-preview">
       <div className="buy-preview-items">
         {totalNotesToShow.map((note) => (
-          <BuyItem item={note} key={note.id} />
+          <BuyItem item={note} key={note._id} />
         ))}
       </div>
       <Pagination
