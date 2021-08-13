@@ -7,8 +7,8 @@
   margin: 1rem 1rem 1rem 0;
   border: 1px solid rgb(156, 146, 146);
   border-radius: 0.3rem;
-  box-shadow: 5px 5px 5px rgba(160, 156, 156, 0.9);
-  padding: 0 0.2rem;
+  box-shadow: 5px 5px 10px 5px rgba(160, 156, 156, 0.9);
+  padding: 0 0.5rem;
 }
 .item-header {
   height: 80%;

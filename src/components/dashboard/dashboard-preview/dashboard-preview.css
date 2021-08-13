@@ -1,17 +1,12 @@
-.dashboard-preview {
-  margin-top: 2rem;
-}
 .preview-title {
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  display: flex;
-  align-items: flex-start;
-  margin-left: 1rem;
+  margin-left: 6.5rem;
 }
 .preview-items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-left: 1rem;
 }
