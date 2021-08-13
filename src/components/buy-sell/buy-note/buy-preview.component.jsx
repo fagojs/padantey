@@ -1,14 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import BuyItem from "./buy-item.component";
 import Pagination from "./../../common/pagination/pagination";
 
 import "./buy-preview.css";
 
-const BuyPreview = ({ notes }) => {
+const BuyPreview = ({ currentUser }) => {
+  const [totalNotes, setTotalNotes] = useState([]);
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const userToken = localStorage.getItem("token");
+        const data = await axios.get("http://localhost:8000/note/get-note", {
+          headers: { "x-auth-token": `${userToken}` },
+        });
+        return data;
+      };
+      fetchData()
+        .then(({ data }) => {
+          const filteredNote = data.notesData.filter(
+            (note) => note.user.toString() !== currentUser.id.toString()
+          );
+          setTotalNotes(filteredNote);
+        })
+        .catch((err) => {
+          if (err) throw err;
+        });
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.message);
+      }
+    }
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const [notesPerPage] = useState(6);
-  const [totalNotes] = useState(notes);
 
   const lastIdx = currentPage * notesPerPage;
   const firstIdx = lastIdx - notesPerPage;
