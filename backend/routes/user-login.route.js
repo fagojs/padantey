@@ -35,10 +35,13 @@ router.post("/login", async (req, res) => {
       process.env.secretKey,
       { expiresIn: 3600 },
       (err, token) => {
-        return res.status(200).json({
-          token,
-          message: `${user.username}, you're logged in successfully.`,
-        });
+        res
+          .header("x-auth-token", token)
+          .status(201)
+          .json({
+            token,
+            message: `${user.username}, you're logged in successfully.`,
+          });
       }
     );
   } catch (error) {

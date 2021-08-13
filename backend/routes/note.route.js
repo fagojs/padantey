@@ -4,6 +4,7 @@ const router = express.Router();
 
 const auth = require("../middleware/auth.middleware");
 const Note = require("../models/note.model");
+const User = require("../models/user.model");
 
 const validateNoteInput = require("../validation/note.validation");
 
@@ -33,7 +34,7 @@ router.post("/add-note", auth, (req, res) => {
         throw err;
       });
   } catch (error) {
-    return res.status(400).json({ message: "Cannot add note to database." });
+    return res.status(400).json(errors);
   }
 });
 router.get("/get-note", auth, async (req, res) => {
