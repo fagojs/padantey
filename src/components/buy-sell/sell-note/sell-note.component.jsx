@@ -37,20 +37,13 @@ const SellNote = () => {
         date: state.date,
       };
       const userToken = localStorage.getItem("token");
-      if (!userToken) {
-        alert("Have You Registered ?");
-        window.location = "/signin";
-      }
-
-      const note = await axios.post(
-        "http://localhost:8000/note/add-note",
-        noteData,
-        { headers: { "x-auth-token": `${userToken}` } }
-      );
+      await axios.post("http://localhost:8000/note/add-note", noteData, {
+        headers: { "x-auth-token": `${userToken}` },
+      });
       window.location = "/";
     } catch (error) {
       if (error.response) {
-        alert(error.response.data);
+        alert(error.response.data.message);
       }
     }
   };

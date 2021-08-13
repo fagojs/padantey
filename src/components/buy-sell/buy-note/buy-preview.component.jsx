@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 import BuyItem from "./buy-item.component";
@@ -9,7 +9,7 @@ import "./buy-preview.css";
 const BuyPreview = ({ currentUser }) => {
   const [totalNotes, setTotalNotes] = useState([]);
 
-  let componentMounted = true;
+  let componentMounted = useRef(true);
   const fetchData = async () => {
     const userToken = localStorage.getItem("token");
     return await axios.get("http://localhost:8000/note/get-note", {
@@ -28,19 +28,19 @@ const BuyPreview = ({ currentUser }) => {
             setTotalNotes(filteredNote);
           }
         })
-        .catch((err) => {
-          if (err) throw err;
+        .catch((error) => {
+          if (error) throw error;
         });
     } catch (error) {
       if (error.response) {
-        alert(error.response.message);
+        console.log(error.response.data);
       }
     }
     //runs-if-component-unmounts
     return () => {
-      componentMounted = false;
+      componentMounted.current = false;
     };
-  }, []);
+  }, [currentUser]);
   const [currentPage, setCurrentPage] = useState(1);
   const [notesPerPage] = useState(6);
 
