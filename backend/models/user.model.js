@@ -6,10 +6,10 @@ const userSchema = new Schema({
   username: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  carts: {
+  cart: {
     notes: [
       {
-        productId: { type: Schema.Types.ObjectId, ref: "Note", required: true },
+        noteId: { type: Schema.Types.ObjectId, ref: "Note", required: true },
         quantity: { type: Number, required: true },
       },
     ],
