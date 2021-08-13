@@ -34,7 +34,11 @@ function App() {
           path="/buy-note"
           exact
           render={() => {
-            return currentUser ? <BuyNote /> : <Redirect to="/signup" />;
+            return currentUser ? (
+              <BuyNote currentUser={currentUser} />
+            ) : (
+              <Redirect to="/signup" />
+            );
           }}
         />
         <Route
