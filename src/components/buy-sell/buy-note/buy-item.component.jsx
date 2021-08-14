@@ -1,12 +1,27 @@
+import axios from "axios";
 import React from "react";
 
 import "./buy-item.css";
-const BuyItem = ({ item }) => {
-  const { name, author, price, page, quality, description } = item;
+const BuyItem = ({ item, currentUser }) => {
+  const { name, author, price, page, quality, description, _id } = item;
 
-  const handleClick = () => {
-    alert("hello-buyer");
+  const handleClick = async (nId, uId) => {
     //backend-call
+    try {
+      const reqData = {
+        nId: nId,
+        userId: uId,
+      };
+      const { data } = await axios.patch(
+        "http://localhost:8000/cart/add-to-cart",
+        reqData
+      );
+      console.log(data);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+      }
+    }
   };
 
   return (
@@ -24,7 +39,10 @@ const BuyItem = ({ item }) => {
         <span className="page">Page:{page}</span>
         <span className="price">Rs.{price}</span>
       </div>
-      <div className="vertical-button" onClick={handleClick}>
+      <div
+        className="vertical-button"
+        onClick={() => handleClick(_id, currentUser.id)}
+      >
         <span>b</span>
         <span>u</span>
         <span>y</span>
