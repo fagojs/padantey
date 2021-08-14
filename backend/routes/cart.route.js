@@ -39,4 +39,29 @@ router.patch("/add-to-cart", async (req, res) => {
   }
 });
 
+router.get("/get-cart/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const user = await User.findById(userId).select("-password");
+    if (!user) {
+      throw new Error("User not found.");
+    }
+    let cartArr = [];
+    const totalNotes = user.cart.notes;
+    for (let i = 0; i < totalNotes.length; i++) {
+      const note = user.cart.notes[i];
+      const noteDetail = await Note.findById(note.noteId).select("-user -__v");
+      const quantity = note.quantity;
+      cartArr.push({ noteDetail, quantity });
+    }
+    if (!cartArr.length) {
+      throw new Error("Error loading cart notes.");
+    }
+    res.status(200).json({ cartDatas: cartArr });
+  } catch (error) {
+    res.status(400).json({ message: "Error fetching from cart." });
+  }
+});
+
 module.exports = router;
