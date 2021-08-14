@@ -33,7 +33,7 @@ const BuyPreview = ({ currentUser }) => {
         });
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data);
+        console.log(error.response.data.message);
       }
     }
     //runs-if-component-unmounts
@@ -56,7 +56,7 @@ const BuyPreview = ({ currentUser }) => {
     <div className="buy-preview">
       <div className="buy-preview-items">
         {totalNotesToShow.map((note) => (
-          <BuyItem item={note} key={note._id} />
+          <BuyItem item={note} key={note._id} currentUser={currentUser} />
         ))}
       </div>
       <Pagination
