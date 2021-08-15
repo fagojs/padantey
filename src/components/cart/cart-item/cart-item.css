@@ -1,0 +1,28 @@
+.cart-item-container {
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  width: 50vw;
+  height: 4rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
+  font-size: 1.2rem;
+}
+.note-face {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.remove-note {
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.arrow {
+  padding: 0 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+}
