@@ -2,10 +2,10 @@ import React from "react";
 
 import BuyPreview from "./buy-preview.component";
 
-const BuyNote = ({ currentUser }) => {
+const BuyNote = () => {
   return (
     <div className="buy-note-container">
-      <BuyPreview currentUser={currentUser} />
+      <BuyPreview />
     </div>
   );
 };
