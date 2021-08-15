@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import CartIcon from "../cart/cart-icon/cart-icon.component";
 import { BsBook } from "react-icons/bs";
@@ -44,7 +45,7 @@ const Header = ({ currentUser }) => {
                 {currentUser.username}
               </span>
             </Link>
-            <CartIcon />
+            <CartIcon currentUser={currentUser} />
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -61,4 +62,8 @@ const Header = ({ currentUser }) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Header);

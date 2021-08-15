@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 
 import BuyItem from "./buy-item.component";
@@ -29,7 +30,7 @@ const BuyPreview = ({ currentUser }) => {
           }
         })
         .catch((error) => {
-          if (error) throw error;
+          if (error) throw new Error("Error fetching note.");
         });
     } catch (error) {
       if (error.response) {
@@ -69,4 +70,8 @@ const BuyPreview = ({ currentUser }) => {
   );
 };
 
-export default BuyPreview;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(BuyPreview);
