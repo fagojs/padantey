@@ -5,11 +5,11 @@ import axios from "axios";
 import BuyItem from "./buy-item.component";
 import Pagination from "./../../common/pagination/pagination";
 
+import setTotalNotes from "../../../redux/actions/buy-note.actions";
+
 import "./buy-preview.css";
 
-const BuyPreview = ({ currentUser }) => {
-  const [totalNotes, setTotalNotes] = useState([]);
-
+const BuyPreview = ({ currentUser, updateTotalNotes, totalNotes }) => {
   let componentMounted = useRef(true);
   const fetchData = async () => {
     const userToken = localStorage.getItem("token");
@@ -26,7 +26,7 @@ const BuyPreview = ({ currentUser }) => {
             (note) => note.user.toString() !== currentUser.id.toString()
           );
           if (componentMounted) {
-            setTotalNotes(filteredNote);
+            updateTotalNotes(filteredNote);
           }
         })
         .catch((error) => {
@@ -41,7 +41,7 @@ const BuyPreview = ({ currentUser }) => {
     return () => {
       componentMounted.current = false;
     };
-  }, [currentUser]);
+  }, [currentUser, updateTotalNotes]);
   const [currentPage, setCurrentPage] = useState(1);
   const [notesPerPage] = useState(6);
 
@@ -72,6 +72,11 @@ const BuyPreview = ({ currentUser }) => {
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
+  totalNotes: state.buyNotes.totalNotes,
 });
 
-export default connect(mapStateToProps)(BuyPreview);
+const mapDispatchToProps = (dispatch) => ({
+  updateTotalNotes: (notes) => dispatch(setTotalNotes(notes)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyPreview);
