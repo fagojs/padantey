@@ -39,28 +39,36 @@ router.patch("/add-to-cart", async (req, res) => {
   }
 });
 
-router.get("/get-cart/:userId", async (req, res) => {
-  const { userId } = req.params;
-
+router.get("/get-cart", auth, async (req, res) => {
   try {
-    const user = await User.findById(userId).select("-password");
+    const user = await User.findById(req.user.id)
+      .select("-password")
+      .populate("cart.notes.noteId");
+
     if (!user) {
-      throw new Error("User not found.");
+      throw new Error({ message: "Error searching user." });
     }
-    let cartArr = [];
-    const totalNotes = user.cart.notes;
-    for (let i = 0; i < totalNotes.length; i++) {
-      const note = user.cart.notes[i];
-      const noteDetail = await Note.findById(note.noteId).select("-user -__v");
-      const quantity = note.quantity;
-      cartArr.push({ noteDetail, quantity });
-    }
-    if (!cartArr.length) {
-      throw new Error("Error loading cart notes.");
-    }
-    res.status(200).json({ cartDatas: cartArr });
+    res.status(200).json({ cartDatas: user.cart.notes });
   } catch (error) {
     res.status(400).json({ message: "Error fetching from cart." });
+  }
+});
+
+router.delete("/delete-note/:noteId", auth, async (req, res) => {
+  const { noteId } = req.params;
+  try {
+    const user = await User.findById(req.user.id);
+    const updatedCart = user.cart.notes.filter(
+      (note) => note.noteId.toString() !== noteId.toString()
+    );
+    if (!updatedCart.length) {
+      throw new Error({ message: "Empty cart." });
+    }
+    user.cart.notes = updatedCart;
+    await user.save();
+    res.status(200).json({ message: "Successfully removed from cart." });
+  } catch (error) {
+    res.status(400).json({ message: "Error on removing notes from cart." });
   }
 });
 
