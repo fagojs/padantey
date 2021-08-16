@@ -1,0 +1,10 @@
+.home {
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+.home p {
+  width: 50vw;
+  font-size: 1.4rem;
+}
