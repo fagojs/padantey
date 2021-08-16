@@ -15,7 +15,7 @@ const Header = ({ currentUser }) => {
       </Link>
       <div className="other-headers">
         <Link to="/" className="header">
-          Dashboard
+          Home
         </Link>
         {currentUser ? (
           <React.Fragment>
@@ -25,12 +25,15 @@ const Header = ({ currentUser }) => {
             <Link to="/sell-note" className="header">
               Sell-Note
             </Link>
-            <Link to="/logout" className="two-header">
-              <span>Logout</span>
-              <span className="username">{currentUser.username}</span>
+            <Link to="/sold-note" className="header">
+              Sold-Note
             </Link>
             <Link to="/cart-page" className="header">
               <CartIcon />
+            </Link>
+            <Link to="/logout" className="two-header">
+              <span>Logout</span>
+              <span className="username">{currentUser.username}</span>
             </Link>
           </React.Fragment>
         ) : (
