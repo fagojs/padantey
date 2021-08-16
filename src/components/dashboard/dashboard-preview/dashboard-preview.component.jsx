@@ -6,10 +6,9 @@ import Pagination from "./../../common/pagination/pagination";
 import "./dashboard-preview.css";
 
 const DashboardPreview = ({ data }) => {
-  const { title, items } = data;
   const [currentPage, setCurrentPage] = useState(1);
   const [notesPerPage] = useState(3);
-  const [totalNotes] = useState(items);
+  const [totalNotes] = useState(data);
 
   const lastIdx = currentPage * notesPerPage;
   const firstIdx = lastIdx - notesPerPage;
@@ -19,10 +18,10 @@ const DashboardPreview = ({ data }) => {
 
   return (
     <div className="dashboard-preview">
-      <span className="preview-title">{title}</span>
+      <span className="preview-title">You Sold These Note</span>
       <div className="preview-items">
         {notesToDisplay.map((note) => (
-          <DashboardItem key={note.id} item={note} />
+          <DashboardItem key={note._id} item={note} />
         ))}
       </div>
       <Pagination
